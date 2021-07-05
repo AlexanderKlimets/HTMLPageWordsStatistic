@@ -28,25 +28,33 @@ namespace HTMLPageWordStatistic
                 {
                     var htmlText = downloader.GetInnerText();
                     var parser = new HTMLStringParser(htmlText);
-                    var wordsCount = parser.GetWordsCount();//parser.CountWords();
+                    var wordsCount = parser.CountWords();
 
 
                     foreach (var str in wordsCount)
                     {
                         Console.WriteLine($"{str.Key}: {str.Value}");
                     }
+
+                    
                 }
-                catch (UriFormatException)
+                catch (UriFormatException e)
                 {
                     Console.WriteLine("Невозможно получить текст по данному URL. Проверьте правильность URL.");
+                    var saver = new Saver();
+                    saver.ExceptionSaved(e);
                 }
                 catch(ArgumentNullException e)
                 {
                     Console.WriteLine(e.Message);
+                    var saver = new Saver();
+                    saver.ExceptionSaved(e);
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
+                    var saver = new Saver();
+                    saver.ExceptionSaved(e);
                 }
 
             }                       

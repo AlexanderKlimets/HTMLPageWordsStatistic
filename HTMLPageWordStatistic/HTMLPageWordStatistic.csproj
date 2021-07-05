@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Classes\HTMLCodeDownloader.cs" />
     <Compile Include="Classes\HTMLStringParser.cs" />
+    <Compile Include="Classes\Saver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
