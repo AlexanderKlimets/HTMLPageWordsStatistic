@@ -6,12 +6,28 @@ using System.Threading.Tasks;
 
 namespace HTMLPageWordStatistic.Classes
 {
+    /// <summary>
+    /// Класс позволяет преобразовать строку слов HTML-страницы в словарь частоты встречаемости слов на сайте
+    /// </summary>
     class HTMLStringParser
     {
+        /// <summary>
+        /// Строка слов HTML-страницы
+        /// </summary>
         private string HTMLString;
+        /// <summary>
+        /// Список разделителей
+        /// </summary>
         private char[] Splitters;
+        /// <summary>
+        /// Словарь частоты встречаемости слов на сайте
+        /// </summary>
         private Dictionary<string, int> WordsCount;
 
+        /// <summary>
+        /// Создает новый экземпляр парсера
+        /// </summary>
+        /// <param name="htmlString">Строка слов HTML-страницы</param>
         public HTMLStringParser (string htmlString)
         {
             if (htmlString == null)
@@ -22,6 +38,11 @@ namespace HTMLPageWordStatistic.Classes
             Splitters = new char[] { ' ', ',', '.', '!', '?', '"', ';', ':', '[', ']', '(', ')', '\n', '\r', '\t' };
         }
 
+        /// <summary>
+        /// Создает новый экземпляр парсера
+        /// </summary>
+        /// <param name="htmlString">Строка слов HTML-страницы</param>
+        /// <param name="splitters">Список разделителей</param>
         public HTMLStringParser(string htmlString, char[] splitters)
         {
             if (htmlString == null)
@@ -36,16 +57,28 @@ namespace HTMLPageWordStatistic.Classes
             Splitters = splitters;
         }
 
+        /// <summary>
+        /// Заменяет существующий список разделителей
+        /// </summary>
+        /// <param name="newSplitters">Новый список разделителей</param>
         public void ChangeSplitters (char[] newSplitters)
         {
             Splitters = newSplitters;
         }
 
+        /// <summary>
+        /// Заменяет существующую строку слов HTML-страницы
+        /// </summary>
+        /// <param name="newHTMLString">Строка слов HTML-страницы</param>
         public void ChangeHTMLString(string newHTMLString)
         {
             HTMLString = newHTMLString;
         }
 
+        /// <summary>
+        /// Позволяет получить словарь частоты встречаемости слов
+        /// </summary>
+        /// <returns>Словарь частоты встречаемости слов</returns>
         public Dictionary<string, int> GetWordsCount()
         {
             if (WordsCount == null)
@@ -55,6 +88,10 @@ namespace HTMLPageWordStatistic.Classes
             return WordsCount;
         }
 
+        /// <summary>
+        /// Создает словарь частоты встречаемости слов по заданной строке слов HTML-страницы
+        /// </summary>
+        /// <returns>Строка слов HTML-страницы</returns>
         public Dictionary<string, int> CountWords()
         {
             WordsCount = new Dictionary<string, int>();
